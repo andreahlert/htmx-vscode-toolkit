@@ -3,7 +3,7 @@
   "displayName": "HTMX Toolkit",
   "description": "Complete HTMX development toolkit: IntelliSense, hover docs, validation, diagnostics, and snippets for 20+ template languages",
   "version": "0.1.4",
-  "publisher": "andreahlert",
+  "publisher": "atoolz",
   "license": "MIT",
   "icon": "assets/icon.png",
   "repository": {

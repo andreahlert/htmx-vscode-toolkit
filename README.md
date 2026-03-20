@@ -7,14 +7,14 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=andreahlert.htmx-vscode-toolkit">
-    <img src="https://img.shields.io/visual-studio-marketplace/v/andreahlert.htmx-vscode-toolkit?style=flat-square&label=VS%20Marketplace&color=3366CC" alt="VS Marketplace Version">
+  <a href="https://marketplace.visualstudio.com/items?itemName=atoolz.htmx-vscode-toolkit">
+    <img src="https://img.shields.io/visual-studio-marketplace/v/atoolz.htmx-vscode-toolkit?style=flat-square&label=VS%20Marketplace&color=3366CC" alt="VS Marketplace Version">
   </a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=andreahlert.htmx-vscode-toolkit">
-    <img src="https://img.shields.io/visual-studio-marketplace/i/andreahlert.htmx-vscode-toolkit?style=flat-square&label=Installs&color=3366CC" alt="Installs">
+  <a href="https://marketplace.visualstudio.com/items?itemName=atoolz.htmx-vscode-toolkit">
+    <img src="https://img.shields.io/visual-studio-marketplace/i/atoolz.htmx-vscode-toolkit?style=flat-square&label=Installs&color=3366CC" alt="Installs">
   </a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=andreahlert.htmx-vscode-toolkit">
-    <img src="https://img.shields.io/visual-studio-marketplace/r/andreahlert.htmx-vscode-toolkit?style=flat-square&label=Rating&color=3366CC" alt="Rating">
+  <a href="https://marketplace.visualstudio.com/items?itemName=atoolz.htmx-vscode-toolkit">
+    <img src="https://img.shields.io/visual-studio-marketplace/r/atoolz.htmx-vscode-toolkit?style=flat-square&label=Rating&color=3366CC" alt="Rating">
   </a>
   <a href="https://github.com/atoolz/htmx-vscode-toolkit/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/atoolz/htmx-vscode-toolkit?style=flat-square&color=3366CC" alt="License">
@@ -124,7 +124,7 @@ Works everywhere HTMX is used:
 **Command Line:**
 
 ```bash
-code --install-extension andreahlert.htmx-vscode-toolkit
+code --install-extension atoolz.htmx-vscode-toolkit
 ```
 
 <br>
