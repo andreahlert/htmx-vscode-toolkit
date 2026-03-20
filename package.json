@@ -2,7 +2,7 @@
   "name": "htmx-vscode-toolkit",
   "displayName": "HTMX Toolkit",
   "description": "Complete HTMX development toolkit: IntelliSense, hover docs, validation, diagnostics, and snippets for 20+ template languages",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "andreahlert",
   "license": "MIT",
   "icon": "assets/icon.png",
