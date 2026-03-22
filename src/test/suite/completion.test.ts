@@ -93,9 +93,9 @@ suite('HTMX Completion Provider', () => {
         const completions = await getCompletionsAt('<div hx-sync=""></div>', 0, 14);
         const labels = getLabels(completions);
         assert.ok(completions.items.length > 0, 'Should provide sync completions');
-        assert.ok(labels.includes('drop'), 'Should include drop');
-        assert.ok(labels.includes('abort'), 'Should include abort');
-        assert.ok(labels.includes('replace'), 'Should include replace');
+        assert.ok(labels.some(l => l.includes('this:drop')), 'Should include this:drop');
+        assert.ok(labels.some(l => l.includes('this:abort')), 'Should include this:abort');
+        assert.ok(labels.some(l => l.includes('this:replace')), 'Should include this:replace');
     });
 
     test('provides hx-params value completions', async () => {

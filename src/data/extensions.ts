@@ -38,6 +38,11 @@ export const htmxExtensions: HtmxExtension[] = [
     description: 'Morph swap strategy using idiomorph algorithm for DOM diffing',
     docsUrl: 'https://github.com/bigskysoftware/idiomorph',
   },
+  {
+    name: 'htmx-1-compat',
+    description: 'Rolls back most behavioral changes of htmx 2 to the htmx 1 defaults',
+    docsUrl: 'https://github.com/bigskysoftware/htmx-extensions/blob/main/src/htmx-1-compat/README.md',
+  },
 
   // ── Community extensions (GitHub) ─────────────────────
   {

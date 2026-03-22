@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 (2026-03-22)
+
+### Bug Fixes
+
+- Fix debounce timer leak on extension deactivation (dispose clears pending timers)
+- Fix hx-sync test assertions to match updated completion labels (this:drop, this:abort)
+- Remove fabricated htmx:send-abort event (duplicate of htmx:abort)
+- Add hover support for hx-on-- JSX variant (e.g. hx-on--click)
+- Add missing htmx-1-compat extension to extensions data
+
 ## 0.2.0 (2026-03-22)
 
 ### Bug Fixes

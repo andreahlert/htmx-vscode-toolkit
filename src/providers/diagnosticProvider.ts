@@ -298,6 +298,10 @@ export class HtmxDiagnosticProvider implements vscode.Disposable {
   }
 
   dispose(): void {
+    for (const timer of this.debounceTimers.values()) {
+      clearTimeout(timer);
+    }
+    this.debounceTimers.clear();
     this.diagnosticCollection.dispose();
     for (const d of this.disposables) {
       d.dispose();

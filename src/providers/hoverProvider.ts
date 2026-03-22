@@ -30,8 +30,8 @@ export class HtmxHoverProvider implements vscode.HoverProvider {
 
     const word = document.getText(range);
 
-    // Check if this is an hx-on: event attribute
-    if (word.startsWith('hx-on:')) {
+    // Check if this is an hx-on: or hx-on-- (JSX) event attribute
+    if (word.startsWith('hx-on:') || word.startsWith('hx-on--')) {
       return this.provideHxOnHover(word, range);
     }
 
@@ -125,7 +125,10 @@ export class HtmxHoverProvider implements vscode.HoverProvider {
    * Provides hover info for hx-on:<event> attributes.
    */
   private provideHxOnHover(word: string, range: vscode.Range): vscode.Hover {
-    const eventName = word.replace('hx-on:', '');
+    // Normalize hx-on-- (JSX) to hx-on: for display
+    const eventName = word.startsWith('hx-on--')
+      ? word.replace('hx-on--', '')
+      : word.replace('hx-on:', '');
     const md = new vscode.MarkdownString();
     md.isTrusted = true;
 

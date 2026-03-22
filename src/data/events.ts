@@ -110,7 +110,7 @@ export const htmxEvents: EventDefinition[] = [
   { name: 'htmx:xhr:progress', description: 'Triggered periodically during XHR data transfer' },
   { name: 'htmx:trigger', description: 'Triggered when an hx-trigger condition is met' },
   { name: 'htmx:before-history-update', description: 'Triggered before the history is updated' },
-  { name: 'htmx:send-abort', description: 'Triggered when a request send is aborted' },
+
   { name: 'htmx:validate-url', description: 'Triggered to validate the URL before a request is sent. Can be cancelled to prevent the request.' },
   { name: 'htmx:history-cache-hit', description: 'Triggered on a cache hit during history navigation' },
 ];
