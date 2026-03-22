@@ -108,6 +108,11 @@ export const htmxEvents: EventDefinition[] = [
   { name: 'htmx:xhr:loadend', description: 'Triggered when the XHR finishes loading' },
   { name: 'htmx:xhr:loadstart', description: 'Triggered when the XHR starts loading' },
   { name: 'htmx:xhr:progress', description: 'Triggered periodically during XHR data transfer' },
+  { name: 'htmx:trigger', description: 'Triggered when an hx-trigger condition is met' },
+  { name: 'htmx:before-history-update', description: 'Triggered before the history is updated' },
+  { name: 'htmx:send-abort', description: 'Triggered when a request send is aborted' },
+  { name: 'htmx:validate-url', description: 'Triggered to validate the URL before a request is sent. Can be cancelled to prevent the request.' },
+  { name: 'htmx:history-cache-hit', description: 'Triggered on a cache hit during history navigation' },
 ];
 
 /** HTMX v1 legacy camelCase event names for backward compatibility */
@@ -144,6 +149,9 @@ export const htmxEventsLegacy: EventDefinition[] = [
   { name: 'htmx:sseOpen', description: '(v1 compat) Triggered when an SSE connection is established' },
   { name: 'htmx:swapError', description: '(v1 compat) Triggered when an error occurs during the swap phase' },
   { name: 'htmx:targetError', description: '(v1 compat) Triggered when an invalid target is specified' },
+  { name: 'htmx:beforeHistoryUpdate', description: '(v1 compat) Triggered before the history is updated' },
+  { name: 'htmx:historyCacheHit', description: '(v1 compat) Triggered on a cache hit during history navigation' },
+  { name: 'htmx:validateUrl', description: '(v1 compat) Triggered to validate the URL before a request is sent' },
 ];
 
 /**

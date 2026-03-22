@@ -124,6 +124,18 @@
       {
         "language": "nunjucks",
         "path": "./snippets/htmx.json"
+      },
+      {
+        "language": "razor",
+        "path": "./snippets/htmx.json"
+      },
+      {
+        "language": "jade",
+        "path": "./snippets/htmx.json"
+      },
+      {
+        "language": "pug",
+        "path": "./snippets/htmx.json"
       }
     ],
     "configuration": {

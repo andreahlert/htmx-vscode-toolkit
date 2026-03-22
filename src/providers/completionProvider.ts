@@ -95,7 +95,7 @@ export class HtmxCompletionProvider implements vscode.CompletionItemProvider {
     // Add hx-on:* dynamic completion
     if (!partial || 'hx-on:'.startsWith(partial) || partial.startsWith('hx-on:')) {
       const onItem = new vscode.CompletionItem('hx-on:', vscode.CompletionItemKind.Property);
-      onItem.insertText = new vscode.SnippetString('hx-on:${1|click,submit,change,keyup,load,htmx:beforeRequest,htmx:afterRequest,htmx:beforeSwap,htmx:afterSwap|}="$2"$0');
+      onItem.insertText = new vscode.SnippetString('hx-on:${1|click,submit,change,keyup,load,htmx:before-request,htmx:after-request,htmx:before-swap,htmx:after-swap|}="$2"$0');
       onItem.documentation = new vscode.MarkdownString(
         'Attaches an inline event handler. Use `hx-on:<event-name>` syntax.\n\n' +
         'Supports both DOM events (click, submit) and HTMX events (htmx:beforeRequest).\n\n' +
@@ -307,17 +307,21 @@ export class HtmxCompletionProvider implements vscode.CompletionItemProvider {
    */
   private provideSyncCompletions(_currentValue: string): vscode.CompletionItem[] {
     const strategies = [
-      { value: 'drop', description: 'Drop this request if one is already in flight' },
-      { value: 'abort', description: 'Abort the running request and send this one' },
-      { value: 'replace', description: 'Abort the running request and replace it' },
-      { value: 'queue first', description: 'Queue only the first request' },
-      { value: 'queue last', description: 'Queue only the last request' },
-      { value: 'queue all', description: 'Queue all requests in order' },
+      { value: 'this:drop', description: 'Drop this request if one is already in flight on this element', snippet: 'this:drop' },
+      { value: 'this:abort', description: 'Abort the running request on this element and send this one', snippet: 'this:abort' },
+      { value: 'this:replace', description: 'Abort the running request on this element and replace it', snippet: 'this:replace' },
+      { value: 'this:queue first', description: 'Queue only the first request on this element', snippet: 'this:queue first' },
+      { value: 'this:queue last', description: 'Queue only the last request on this element', snippet: 'this:queue last' },
+      { value: 'this:queue all', description: 'Queue all requests on this element in order', snippet: 'this:queue all' },
+      { value: 'closest form:abort', description: 'Abort running requests on the closest form', snippet: 'closest ${1:form}:abort' },
+      { value: 'closest form:drop', description: 'Drop if request is in flight on the closest form', snippet: 'closest ${1:form}:drop' },
+      { value: 'closest form:replace', description: 'Replace running request on the closest form', snippet: 'closest ${1:form}:replace' },
     ];
 
     return strategies.map((s, i) => {
       const item = new vscode.CompletionItem(s.value, vscode.CompletionItemKind.EnumMember);
       item.documentation = new vscode.MarkdownString(s.description);
+      item.insertText = new vscode.SnippetString(s.snippet);
       item.sortText = String(i).padStart(2, '0');
       return item;
     });

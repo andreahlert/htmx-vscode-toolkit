@@ -18,21 +18,37 @@ const knownAttributeNames = new Set<string>(htmxAttributes.keys());
 export class HtmxDiagnosticProvider implements vscode.Disposable {
   private diagnosticCollection: vscode.DiagnosticCollection;
   private disposables: vscode.Disposable[] = [];
+  private debounceTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
   constructor() {
     this.diagnosticCollection = vscode.languages.createDiagnosticCollection('htmx');
 
-    // Update diagnostics on document open and change
+    // Update diagnostics on document open (immediate) and change (debounced)
     this.disposables.push(
       vscode.workspace.onDidOpenTextDocument((doc) => this.updateDiagnostics(doc)),
-      vscode.workspace.onDidChangeTextDocument((e) => this.updateDiagnostics(e.document)),
-      vscode.workspace.onDidCloseTextDocument((doc) => this.diagnosticCollection.delete(doc.uri)),
+      vscode.workspace.onDidChangeTextDocument((e) => this.debouncedUpdate(e.document)),
+      vscode.workspace.onDidCloseTextDocument((doc) => {
+        this.debounceTimers.delete(doc.uri.toString());
+        this.diagnosticCollection.delete(doc.uri);
+      }),
     );
 
     // Process already-open documents
     for (const doc of vscode.workspace.textDocuments) {
       this.updateDiagnostics(doc);
     }
+  }
+
+  private debouncedUpdate(document: vscode.TextDocument): void {
+    const key = document.uri.toString();
+    const existing = this.debounceTimers.get(key);
+    if (existing) {
+      clearTimeout(existing);
+    }
+    this.debounceTimers.set(key, setTimeout(() => {
+      this.debounceTimers.delete(key);
+      this.updateDiagnostics(document);
+    }, 300));
   }
 
   /**
@@ -127,6 +143,8 @@ export class HtmxDiagnosticProvider implements vscode.Disposable {
       message += ' Use the WebSocket extension (hx-ext="ws") with ws-connect instead.';
     } else if (occ.name === 'hx-sse') {
       message += ' Use the SSE extension (hx-ext="sse") with sse-connect instead.';
+    } else if (occ.name === 'hx-vars') {
+      message += ' Use hx-vals instead.';
     }
 
     const diag = new vscode.Diagnostic(

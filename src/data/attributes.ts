@@ -202,6 +202,14 @@ export const htmxAttributes: Map<string, HtmxAttribute> = new Map([
     docsUrl: 'https://htmx.org/attributes/hx-vals/',
     since: '1.0.0',
   }],
+  ['hx-vars', {
+    name: 'vars',
+    description: '(Deprecated) Adds values dynamically to the parameters submitted with the request. Use hx-vals instead.',
+    valueHint: 'JavaScript expression returning an Object',
+    docsUrl: 'https://htmx.org/attributes/hx-vars/',
+    since: '1.0.0',
+    deprecated: true,
+  }],
   ['hx-params', {
     name: 'params',
     description: 'Filters the parameters submitted with a request. Can include all, none, or exclude specific parameter names.',
@@ -285,6 +293,15 @@ export const htmxAttributes: Map<string, HtmxAttribute> = new Map([
     docsUrl: 'https://htmx.org/attributes/hx-disinherit/',
     since: '1.6.0',
   }],
+  ['hx-inherit', {
+    name: 'inherit',
+    description: 'Explicitly enables attribute inheritance for child elements. When automatic inheritance is disabled, use this to re-enable inheritance for specific attributes.',
+    values: [
+      { value: '*', description: 'Enable inheritance of all hx-* attributes' },
+    ],
+    valueHint: '* or space-separated attribute names (e.g. hx-target hx-swap)',
+    docsUrl: 'https://htmx.org/attributes/hx-inherit/',
+  }],
   ['hx-ext', {
     name: 'ext',
     description: 'Enables one or more HTMX extensions on an element and its children. Extensions add additional behavior to HTMX. Use "ignore:" prefix to disable an inherited extension.',
@@ -332,6 +349,15 @@ export const htmxAttributes: Map<string, HtmxAttribute> = new Map([
     description: 'Specifies the element to snapshot and restore when navigating history. By default the body is used. This allows you to use a smaller element for history snapshots.',
     docsUrl: 'https://htmx.org/attributes/hx-history-elt/',
     since: '1.0.0',
+  }],
+
+  // ── Request configuration ──────────────────────────────
+  ['hx-request', {
+    name: 'request',
+    description: 'Configures aspects of the AJAX request. Accepts a JSON-like string with properties: timeout (ms), credentials (boolean), noHeaders (boolean).',
+    valueHint: 'JSON object (e.g. {"timeout": 3000, "credentials": true})',
+    docsUrl: 'https://htmx.org/attributes/hx-request/',
+    since: '1.4.0',
   }],
 
   // ── Validation ─────────────────────────────────────────
@@ -402,7 +428,6 @@ export const swapModifiers: HtmxAttributeValue[] = [
   { value: 'scroll:', description: 'Scroll target into view (scroll:top or scroll:bottom)' },
   { value: 'show:', description: 'Show target in viewport (show:top or show:bottom)' },
   { value: 'focus-scroll:', description: 'Control focus scroll behavior (focus-scroll:true or focus-scroll:false)' },
-  { value: 'ignoreTitle:', description: 'Ignore title tags in the response (ignoreTitle:true)' },
 ];
 
 /** Modifiers for hx-trigger */
